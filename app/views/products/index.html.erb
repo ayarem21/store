@@ -1,0 +1,28 @@
+<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle bg-success" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <%= "sort_by" %>
+  </button>
+  <div class="dropdown-menu bg-success" aria-labelledby="dropdownMenuButton">
+    <%#= link_to "#{t('products.index.min')}", min_price_product_index_path, class:"dropdown-item"%>
+    <%#= link_to "#{t('products.index.max')}", max_price_product_index_path, class:"dropdown-item"%>
+    <%#= link_to "#{t('products.index.newest')}", new_sort_product_index_path, class:"dropdown-item"%>
+  </div>
+
+</div>
+<div class="first_child">
+  <% @products.each do |product| %>
+    <div class="container alert bg-light">
+      <div class="list group-item">
+        <div>
+          <h3><strong><%= product.name %></strong></h3>
+          <div><%= eval(sprintf("%8.2f",product.price)) %>₴</div>
+          <div>
+            <%= Category.find(product.category_id).name %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <!-- -->
+</div>
