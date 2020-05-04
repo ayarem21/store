@@ -1,12 +1,15 @@
 <div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle bg-success" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    <%= "sort_by" %>
-  </button>
-  <div class="dropdown-menu bg-success" aria-labelledby="dropdownMenuButton">
-    <%#= link_to "#{t('products.index.min')}", min_price_product_index_path, class:"dropdown-item"%>
-    <%#= link_to "#{t('products.index.max')}", max_price_product_index_path, class:"dropdown-item"%>
-    <%#= link_to "#{t('products.index.newest')}", new_sort_product_index_path, class:"dropdown-item"%>
+  <%= form_tag(products_path, :method => "get", id: "price") do %>
+  <div class="row">
+    <div class="col-md-10">
+      <%= text_field_tag :from_price, params[:from_price], placeholder: "min_price", class:"form-control" %>
+      <%= text_field_tag :to_price, params[:to_price], placeholder: "max_price", class:"form-control" %>
+    </div>
+    <div class="col-md-2">
+      <%= submit_tag "Search", class:"btn btn-primary mb-2 form-control"%>
+    </div>
   </div>
+  <% end %>
 
 </div>
 <div class="first_child">
