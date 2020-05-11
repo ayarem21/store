@@ -1,10 +1,13 @@
 <div class="dropdown">
-  <%= form_tag(products_path, :method => "get", id: "price") do %>
+
+  <%= form_tag(products_path, method: "get", id: "price") do %>
   <div class="row">
+    <%= select_tag "category_id", options_from_collection_for_select(@category, "id", "name") %>
     <div class="col-md-10">
       <%= text_field_tag :from_price, params[:from_price], placeholder: "min_price", class:"form-control" %>
       <%= text_field_tag :to_price, params[:to_price], placeholder: "max_price", class:"form-control" %>
     </div>
+    <%#= check_box_tag :desc, params[:min_price] %>
     <div class="col-md-2">
       <%= submit_tag "Search", class:"btn btn-primary mb-2 form-control"%>
     </div>
